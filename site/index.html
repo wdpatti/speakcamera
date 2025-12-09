@@ -190,29 +190,37 @@
         text-align: center;
       }
       
-      .steps-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
+      .carousel-container {
+        position: relative;
+        max-width: 500px;
+        margin: 30px auto;
       }
       
-      .step-item {
+      .carousel-slide {
+        display: none;
         text-align: center;
+        animation: fadeIn 0.5s;
       }
       
-      .step-item img {
+      .carousel-slide.active {
+        display: block;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      .carousel-slide img {
         width: 100%;
-        max-width: 250px;
+        max-width: 280px;
+        min-height: 606px;
         height: auto;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        margin-bottom: 12px;
-        transition: transform 0.3s ease;
-      }
-      
-      .step-item img:hover {
-        transform: scale(1.05);
+        margin: 20px auto;
+        display: block;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf0 100%);
       }
       
       .step-number {
@@ -226,15 +234,73 @@
         font-weight: bold;
         font-size: 1.1em;
         margin-bottom: 15px;
-        position: relative;
-        z-index: 10;
       }
       
       .step-description {
         color: #555;
-        font-size: 0.95em;
-        line-height: 1.5;
-        padding: 0 10px;
+        font-size: 1em;
+        line-height: 1.6;
+        padding: 0 20px;
+        margin-top: 15px;
+      }
+      
+      .carousel-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        gap: 15px;
+      }
+      
+      .carousel-button {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 6px rgba(102, 126, 234, 0.3);
+      }
+      
+      .carousel-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(102, 126, 234, 0.4);
+      }
+      
+      .carousel-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      .carousel-indicator {
+        color: #667eea;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 15px;
+      }
+      
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .carousel-dot.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        transform: scale(1.3);
       }
       
       .github-footer {
@@ -358,48 +424,56 @@
         <h3>Visual Guide: Add to Home Screen</h3>
         <p style="color: #666; text-align: center; margin-bottom: 25px;">Follow these steps to add shortcut widgets to your home screen for quick access:</p>
         
-        <div class="steps-grid">
-          <div class="step-item">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
             <div class="step-number">1</div>
-            <img src="img/1.jpg" alt="Long press home screen">
+            <img loading="eager" src="img/1.webp" alt="Long press home screen">
             <p class="step-description">Long press on your home screen until apps jiggle</p>
           </div>
           
-          <div class="step-item">
+          <div class="carousel-slide">
             <div class="step-number">2</div>
-            <img src="img/2.jpg" alt="Tap plus button">
+            <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='606'%3E%3Crect width='280' height='606' fill='%23f5f7fa'/%3E%3C/svg%3E" data-src="img/2.webp" alt="Tap plus button">
             <p class="step-description">Click "Customize" at the bottom</p>
           </div>
           
-          <div class="step-item">
+          <div class="carousel-slide">
             <div class="step-number">3</div>
-            <img src="img/3.jpg" alt="Search for Shortcuts">
+            <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='606'%3E%3Crect width='280' height='606' fill='%23f5f7fa'/%3E%3C/svg%3E" data-src="img/3.webp" alt="Search for Shortcuts">
             <p class="step-description">Click "Add Widgets" at the bottom</p>
           </div>
           
-          <div class="step-item">
-            <div class="step-number">5</div>
-            <img src="img/5.jpg" alt="Add widget">
+          <div class="carousel-slide">
+            <div class="step-number">4</div>
+            <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='606'%3E%3Crect width='280' height='606' fill='%23f5f7fa'/%3E%3C/svg%3E" data-src="img/5.webp" alt="Add widget">
             <p class="step-description">Scroll down until you find Shortcuts</p>
           </div>
           
-          <div class="step-item">
-            <div class="step-number">6</div>
-            <img src="img/6.jpg" alt="Tap widget to configure">
+          <div class="carousel-slide">
+            <div class="step-number">5</div>
+            <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='606'%3E%3Crect width='280' height='606' fill='%23f5f7fa'/%3E%3C/svg%3E" data-src="img/6.webp" alt="Tap widget to configure">
             <p class="step-description">Click the icon in the center of the display twice to add two buttons then click the X, then click the icon in the widgets bar on the left</p>
           </div>
           
-          <div class="step-item">
-            <div class="step-number">7</div>
-            <img src="img/7.jpg" alt="Select shortcut">
+          <div class="carousel-slide">
+            <div class="step-number">6</div>
+            <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='606'%3E%3Crect width='280' height='606' fill='%23f5f7fa'/%3E%3C/svg%3E" data-src="img/7.webp" alt="Select shortcut">
             <p class="step-description">Select which shortcut to run (SpeakCamera)</p>
           </div>
           
-          <div class="step-item">
-            <div class="step-number">8</div>
-            <img src="img/8.jpg" alt="Repeat for second shortcut">
+          <div class="carousel-slide">
+            <div class="step-number">7</div>
+            <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='606'%3E%3Crect width='280' height='606' fill='%23f5f7fa'/%3E%3C/svg%3E" data-src="img/8.webp" alt="Repeat for second shortcut">
             <p class="step-description">Repeat the process to add the second shortcut widget on the right, StopSpeech</p>
           </div>
+          
+          <div class="carousel-controls">
+            <button class="carousel-button" id="prevBtn">← Previous</button>
+            <div class="carousel-indicator"><span id="currentSlide">1</span> / 7</div>
+            <button class="carousel-button" id="nextBtn">Next →</button>
+          </div>
+          
+          <div class="carousel-dots" id="carouselDots"></div>
         </div>
       
       
@@ -424,5 +498,104 @@
       </div>
     </div>
 
+    <script>
+      // Carousel functionality with lazy loading
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const totalSlides = slides.length;
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const currentSlideSpan = document.getElementById('currentSlide');
+      const dotsContainer = document.getElementById('carouselDots');
+      
+      // Create dots
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+      
+      const dots = document.querySelectorAll('.carousel-dot');
+      let isTransitioning = false;
+      
+      function loadImage(img) {
+        if (img && img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+      }
+      
+      function showSlide(n) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        slides.forEach((slide, index) => {
+          slide.classList.remove('active');
+          dots[index].classList.remove('active');
+        });
+        
+        currentSlide = n;
+        if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+        if (currentSlide < 0) currentSlide = 0;
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+        currentSlideSpan.textContent = currentSlide + 1;
+        
+        // Lazy load current and next image
+        const currentImg = slides[currentSlide].querySelector('img');
+        loadImage(currentImg);
+        
+        // Preload next image
+        if (currentSlide < totalSlides - 1) {
+          const nextImg = slides[currentSlide + 1].querySelector('img');
+          loadImage(nextImg);
+        }
+        
+        // Update button states
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === totalSlides - 1;
+        
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 300);
+      }
+      
+      function goToSlide(n) {
+        showSlide(n);
+      }
+      
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          showSlide(currentSlide + 1);
+        }
+      }
+      
+      function prevSlide() {
+        if (currentSlide > 0) {
+          showSlide(currentSlide - 1);
+        }
+      }
+      
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        prevSlide();
+      });
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        nextSlide();
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+      });
+      
+      // Initialize
+      showSlide(0);
+    </script>
   </body>
 </html>
